@@ -42,7 +42,7 @@ function App() {
       <h1>
         数当てゲーム
       </h1>
-      <input type="number" className="form-control" />
+      <input type="number" className="form-control" value={guess} onChange={(e) => setGuess(e.target.value)} />
       <button onClick={handleAnswer}>回答</button>
       <div>{Log}</div>
 
