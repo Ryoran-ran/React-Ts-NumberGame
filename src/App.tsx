@@ -1,21 +1,25 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
+import { NumberCheck ,resultSComment } from '../src/hooks/number';
 
 function App() {
   const answer = 50
-  const [guess, setGuess] = useState('')
-  const [A, setA] = useState('')
+  const [guess, setGuess] = useState('');
+  const [Log, setLog] = useState('');
 
   const handleAnswer = () => {
 
-    const num = Number(guess)
+    const num = Number(guess);
+    let answerResult = 0;
+    let comment = "";
 
-    setA("a");
+    answerResult = NumberCheck(num, answer);
 
+    comment = resultSComment(answerResult);
 
+    setLog(Log + num +":" + comment + "\n");
+
+    
 
     // if (num < answer) {
 
@@ -40,7 +44,7 @@ function App() {
       </h1>
       <input type="number" className="form-control" />
       <button onClick={handleAnswer}>回答</button>
-      <div>{A}</div>
+      <div>{Log}</div>
 
 
     </>
