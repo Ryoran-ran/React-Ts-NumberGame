@@ -5,7 +5,7 @@ import { NumberCheck ,resultSComment } from '../src/hooks/number';
 function App() {
   const answer = 50
   const [guess, setGuess] = useState('');
-  const [Log, setLog] = useState('');
+  const [Log, setLog] = useState<string[]>([]);
 
   const handleAnswer = () => {
 
@@ -17,23 +17,8 @@ function App() {
 
     comment = resultSComment(answerResult);
 
-    setLog(Log + num +":" + comment + "\n");
+    setLog([...Log, num + ":" + comment]);
 
-    
-
-    // if (num < answer) {
-
-    //   alert('もっと大きいです')
-
-    // } else if (num > answer) {
-
-    //   alert('もっと小さいです')
-
-    // } else {
-
-    //   alert('正解！')
-
-    // }
 
   }
 
@@ -44,7 +29,11 @@ function App() {
       </h1>
       <input type="number" className="form-control" value={guess} onChange={(e) => setGuess(e.target.value)} />
       <button onClick={handleAnswer}>回答</button>
-      <div>{Log}</div>
+      <div>
+        {Log.map(list => (
+            <p key={list}>{list}</p>
+        ))}
+        </div>
 
 
     </>
