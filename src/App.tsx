@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import './App.css'
-import { NumberCheck ,resultSComment } from '../src/hooks/number';
+import { NumberCheck ,resultSComment ,NumberSet } from '../src/hooks/number';
 
 function App() {
-  const answer = 25;
+  const [answer, setAnswer] = useState(-1);
   const [guess, setGuess] = useState('');
   const [Log, setLog] = useState<string[]>([]);
 
@@ -12,6 +12,10 @@ function App() {
     const num = Number(guess);
     let answerResult = 0;
     let comment = "";
+
+    if(answer === -1){
+      setAnswer(NumberSet(1, 50));
+    }
 
     answerResult = NumberCheck(num, answer);
 
@@ -31,11 +35,11 @@ function App() {
       </h1>
       <input type="number" className="form-control" value={guess} onChange={(e) => setGuess(e.target.value)} />
       <button onClick={handleAnswer}>回答</button>
-      <div>
+      <p>
         {Log.map(list => (
             <p key={list}>{list}</p>
         ))}
-        </div>
+        </p>
 
 
     </>
