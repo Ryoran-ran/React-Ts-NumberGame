@@ -3,7 +3,7 @@ import './App.css'
 import { NumberCheck ,resultSComment } from '../src/hooks/number';
 
 function App() {
-  const answer = 50
+  const answer = 25;
   const [guess, setGuess] = useState('');
   const [Log, setLog] = useState<string[]>([]);
 
@@ -18,6 +18,8 @@ function App() {
     comment = resultSComment(answerResult);
 
     setLog([...Log, num + ":" + comment]);
+
+    setGuess('');
 
 
   }
