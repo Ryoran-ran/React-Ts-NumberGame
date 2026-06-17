@@ -12,19 +12,20 @@ function App() {
     const num = Number(guess);
     let answerResult = 0;
     let comment = "";
+    let ansnum = answer;
 
-    if(answer === -1){
-      setAnswer(NumberSet(1, 50));
+    if(ansnum === -1){
+      ansnum = NumberSet(1, 50);
+      setAnswer(ansnum);
     }
 
-    answerResult = NumberCheck(num, answer);
+    answerResult = NumberCheck(num, ansnum);
 
     comment = resultSComment(answerResult);
 
     setLog([...Log, num + ":" + comment]);
 
     setGuess('');
-
 
   }
 
