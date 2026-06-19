@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import './hooks/style.css'
 import { NumberCheck ,resultSComment ,NumberSet } from '../src/hooks/number';
 
 function App() {
@@ -56,7 +57,7 @@ function App() {
       </h1>
       <div>1〜100の数字を当ててください</div>
       <div>
-        <input type="number" disabled={gameClear} className="form-control" value={guess} onChange={(e) => setGuess(e.target.value)} />
+        <input type="number" disabled={gameClear} className="form-control input_number" value={guess} onChange={(e) => setGuess(e.target.value)} />
         <button onClick={handleAnswer} disabled={gameClear}>
           回答
         </button>
