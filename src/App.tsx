@@ -5,17 +5,21 @@ import { NumberCheck ,resultSComment ,NumberSet } from '../src/hooks/number';
 function App() {
   const [answer, setAnswer] = useState(-1);
   const [guess, setGuess] = useState('');
-  const [Log, setLog] = useState<string[]>([]);
-  const [GameClear, setGameClear] = useState(false);
+  const [logs, setLogs] = useState<string[]>([]);
+  const [gameClear, setGameClear] = useState(false);
   const [tryCount, setTryCount] = useState(0);
 
   const handleAnswer = () => {
-
     const num = Number(guess);
     let answerResult = 0;
     let comment = "";
     let ansnum = answer;
     let count = tryCount + 1;
+
+    if(guess === ''){
+      return;
+    }
+
 
     if(ansnum === -1){
       ansnum = NumberSet(1, 100);
@@ -28,7 +32,7 @@ function App() {
 
     comment = resultSComment(answerResult);
 
-    setLog([...Log, count+ "回目: " + num + ":" + comment]);
+    setLogs([...logs, count+ "回目: " + num + ":" + comment]);
 
     if(answerResult === 0){
       setGameClear(true);
@@ -40,8 +44,9 @@ function App() {
   const handleReset = () => {
     setAnswer(-1);
     setGuess('');
-    setLog([]);
+    setLogs([]);
     setGameClear(false);
+    setTryCount(0);
   };
 
   return (
@@ -51,8 +56,8 @@ function App() {
       </h1>
       <div>1〜100の数字を当ててください</div>
       <div>
-        <input type="number" disabled={GameClear} className="form-control" value={guess} onChange={(e) => setGuess(e.target.value)} />
-        <button onClick={handleAnswer} disabled={GameClear}>
+        <input type="number" disabled={gameClear} className="form-control" value={guess} onChange={(e) => setGuess(e.target.value)} />
+        <button onClick={handleAnswer} disabled={gameClear}>
           回答
         </button>
         <button onClick={handleReset}>
@@ -60,7 +65,7 @@ function App() {
         </button>
       </div>
       <div>
-        {[...Log]
+        {[...logs]
           .sort((a: string, b: string) => parseInt(b) - parseInt(a))
           .map((list) => (
             <div key={list}>{list}</div>
