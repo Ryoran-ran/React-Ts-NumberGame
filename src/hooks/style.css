@@ -6,3 +6,21 @@
   box-sizing: border-box;
   font-size: 20px;
 }
+
+.result_comment {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.logs {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #000000;
+}
+
+.input_button {
+  padding: 8px 16px;
+  margin: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
