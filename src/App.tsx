@@ -59,7 +59,7 @@ function App() {
       <div>
         <input type="number" disabled={gameClear} className="form-control input_number" value={guess} onChange={(e) => setGuess(e.target.value)} />
         <br />
-        <button onClick={handleAnswer} disabled={gameClear} className="btn btn-primary input_button">
+        <button onClick={handleAnswer} disabled={gameClear || guess === ''} className="btn btn-primary input_button">
           回答
         </button>
         <button onClick={handleReset} className="btn btn-secondary input_button">
