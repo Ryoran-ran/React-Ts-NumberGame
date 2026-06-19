@@ -61,3 +61,7 @@ React + TypeScriptで作成した数当てゲームです。
 - 配列の表示（map）
 - TypeScriptによる型定義
 - 条件分岐による画面制御
+
+# 遊ぶ場合はこちら
+
+[数当てゲーム](https://ryoran-ran.github.io/React-Ts-NumberGame/)
