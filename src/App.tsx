@@ -7,6 +7,7 @@ function App() {
   const [guess, setGuess] = useState('');
   const [Log, setLog] = useState<string[]>([]);
   const [GameClear, setGameClear] = useState(false);
+  const [tryCount, setTryCount] = useState(0);
 
   const handleAnswer = () => {
 
@@ -14,17 +15,20 @@ function App() {
     let answerResult = 0;
     let comment = "";
     let ansnum = answer;
+    let count = tryCount + 1;
 
     if(ansnum === -1){
       ansnum = NumberSet(1, 100);
       setAnswer(ansnum);
     }
 
+    setTryCount(count);
+
     answerResult = NumberCheck(num, ansnum);
 
     comment = resultSComment(answerResult);
 
-    setLog([...Log, num + ":" + comment]);
+    setLog([...Log, count+ "回目: " + num + ":" + comment]);
 
     if(answerResult === 0){
       setGameClear(true);
@@ -54,11 +58,13 @@ function App() {
         <button onClick={handleReset}>
           リセット
         </button>
-        <div>
-          {Log.map(list => (
-              <div key={list}>{list}</div>
+      </div>
+      <div>
+        {[...Log]
+          .sort((a: string, b: string) => parseInt(b) - parseInt(a))
+          .map((list) => (
+            <div key={list}>{list}</div>
           ))}
-        </div>
       </div>
     </>
   )
