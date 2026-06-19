@@ -8,12 +8,6 @@ function App() {
   const [Log, setLog] = useState<string[]>([]);
   const [GameClear, setGameClear] = useState(false);
 
-  // const handleKeyDown = (e) => {
-
-  //   console.log(e.key);
-
-  // };
-
   const handleAnswer = () => {
 
     const num = Number(guess);
@@ -22,7 +16,7 @@ function App() {
     let ansnum = answer;
 
     if(ansnum === -1){
-      ansnum = NumberSet(1, 50);
+      ansnum = NumberSet(1, 100);
       setAnswer(ansnum);
     }
 
@@ -51,6 +45,7 @@ function App() {
       <h1>
         数当てゲーム
       </h1>
+      <div>1〜100の数字を当ててください</div>
       <div>
         <input type="number" disabled={GameClear} className="form-control" value={guess} onChange={(e) => setGuess(e.target.value)} />
         <button onClick={handleAnswer} disabled={GameClear}>
@@ -59,14 +54,12 @@ function App() {
         <button onClick={handleReset}>
           リセット
         </button>
-        <p>
+        <div>
           {Log.map(list => (
-              <p key={list}>{list}</p>
+              <div key={list}>{list}</div>
           ))}
-        </p>
+        </div>
       </div>
-
-
     </>
   )
 }
