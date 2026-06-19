@@ -1,73 +1,63 @@
-# React + TypeScript + Vite
+# 数当てゲーム
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 概要
 
-Currently, two official plugins are available:
+React + TypeScriptで作成した数当てゲームです。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+ランダムに生成された数字を予想して回答し、正解を目指します。  
+回答履歴を確認しながら繰り返し挑戦できます。
 
-## React Compiler
+## 主な機能
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 数字の入力
+- 回答判定
+- 回答履歴の表示
+- ゲームクリア判定
+- リセット機能
 
-## Expanding the ESLint configuration
+## 遊び方
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. 数字を入力する
+2. 「回答」ボタンを押す
+3. 正解するとゲームクリア
+4. 「リセット」ボタンで新しいゲームを開始できる
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 使用技術
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- React
+- TypeScript
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 工夫した点
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 回答履歴の表示
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+回答履歴を降順で表示することで、最新の回答を確認しやすくしました。
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### リセット機能
+
+ゲームクリア後もすぐに再挑戦できるよう、リセット機能を実装しました。
+
+## 今後の課題
+
+### デザイン改善
+
+- レイアウト調整
+- 視認性向上
+- スマートフォン対応
+
+### ゲーム性の向上
+
+- 数字の範囲を選択できる機能
+- 回答回数制限の追加
+- 難易度設定の追加
+- キーボードから直接入力できるように対応、
+
+## 学習内容
+
+このアプリを通して以下の内容を学習しました。
+
+- Reactの状態管理（useState）
+- イベント処理
+- 配列の表示（map）
+- TypeScriptによる型定義
+- 条件分岐による画面制御
